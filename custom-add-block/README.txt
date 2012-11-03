@@ -24,7 +24,7 @@ To submit bug reports and feature suggestions, or to track changes:
 -- CONFIGURATION --
 
 * After enabling the module, navigate to
- /?q=admin/config/user-interface/custom-add-block
+ /?q=admin/config/user-interface/custom_add_block
 
 * Upload 48x48 pixel square icons for each node type.
  
