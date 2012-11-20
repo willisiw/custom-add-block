@@ -12,19 +12,19 @@ function custom_add_block_admin_settings() {
   $content = system_admin_menu_block($item);
   $count = 0;
   $weight_used = array();
-	 
+
   foreach ($content as $nodeitem) {
     $nodename = str_replace(" ", "_", $nodeitem['link_title']);
     $weight = variable_get('custom_add_block_node_weight_' . $nodename, '');
     if ($weight == '') {
-      $count ++;
+      $count++;
       while (in_array($count, $weight_used)) {
-        $count ++;
+        $count++;
       }
       $weight = $count;
     }
     $weight_used[] = $weight;
-    
+
     $form['custom_add_block_node_weight_' . $nodename] = array(
       '#prefix' => '<table><tr><td>',
       '#suffix' => '</td>',
@@ -46,9 +46,7 @@ function custom_add_block_admin_settings() {
       '#prefix' => '<td>',
       '#suffix' => '</td><td>' .  $previewimg . '</td></tr></table>',
     );
-	}
-	
+  }
 
-	
-	return system_settings_form($form);
+  return system_settings_form($form);
 }

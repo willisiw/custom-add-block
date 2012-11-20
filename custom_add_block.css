@@ -7,28 +7,28 @@
  * depending on the parent elements.
  */
 #custom-add-block {
-   display:block;
-   z-index:100;	
+  display: block;
+  z-index: 100;
 }
 
 div#custom-add-block-icon {
-	float: left;
-	height: 78px;
-	padding: 2px;
-	width: 65px;
-	color: #333;
-	text-shadow: 0 1px 0 #FFF;
-	overflow:hidden;
-	text-overflow: ellipsis;
-	text-align:center;
-	font-family: Helvetica;
-	font-size: 10pt;
-	line-height: 9pt;
-	font-weight: normal;
+  float: left;
+  height: 78px;
+  padding: 2px;
+  width: 65px;
+  color: #333;
+  text-shadow: 0 1px 0 #FFF;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 10pt;
+  line-height: 9pt;
+  font-weight: normal;
 }
 
 div#custom-add-block-icon img{
-	padding:2px;
+  padding:2px;
 
 }
 
@@ -40,11 +40,7 @@ div#custom-add-block-close {
   right: 25px;
 }
 
-div#custom-add-block-close img {
-	
-}
-
 
 div#custom-add-block-load img {
-	alignment-baseline:central;
+  alignment-baseline: central; 
 }

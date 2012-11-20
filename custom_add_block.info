@@ -2,8 +2,5 @@ name = Custom Add Block
 description = Block of icons to Add Nodes.
 core = 7.x
 package = Other
-php = 5.1
 
 configure = admin/config/user-interface//custom_add_block
-version = "7.x-0.84"
-

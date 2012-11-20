@@ -10,7 +10,6 @@
  */
 function custom_add_block_menu() {
 
-  
   $items['admin/config/user-interface/custom_add_block'] = array(
     'title' => 'Custom Add Block',
     'description' => 'A block of configurable buttons to add content.',
@@ -105,9 +104,9 @@ function custom_add_block_block_view($delta=0) {
         $block['subject'] = 'Start Now';
         $block['content'] = t("<ul><li>Welcome !nameurl.</li><li>!url.</li></ul>",
                array(
-               '!nameurl' => l($account->name, "user/$account->uid"),
-               '!name' => $account->name,
-               '!url' => l(t('Click to Add New'), $item['href']),
+                 '!nameurl' => l($account->name, "user/$account->uid"),
+                 '!name' => $account->name,
+                 '!url' => l(t('Click to Add New'), $item['href']),
                ));
       }
       else {

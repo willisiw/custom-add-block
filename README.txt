@@ -46,4 +46,3 @@ To submit bug reports and feature suggestions, or to track changes:
 
 Current maintainers:
 * Ian Willis (willisiw) - http://github.com/willisiw
-
