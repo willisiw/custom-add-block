@@ -5,7 +5,7 @@
  */
 
 
- /**
+/**
  * Implements hook_menu().
  */
 function custom_add_block_menu() {
@@ -25,13 +25,6 @@ function custom_add_block_menu() {
 
 /**
  * Implements hook_block_info().
- *
- * For another example of using block hook functions, see:
- * http://api.drupal.org/api/examples/block_example--block_example.module/7
- *
- * Learn more about hook_block_info() at:
- * http://api.drupal.org/api/drupal/modules--block--block.api.php/function/hook_block_info/7
- *
  */
 function custom_add_block_block_info() {
 
@@ -43,7 +36,6 @@ function custom_add_block_block_info() {
   );
   return $blocks;
 }
-
 
 
 /**
@@ -60,7 +52,6 @@ function custom_add_block_block_view($delta=0) {
   // Bypass the node/add listing if only one content type is available.
   if (count($content) == 1) {
     $item = array_shift($content);
-   
   }
   $themedpage = theme('node_add_list', array('content' => $content));
 
@@ -69,13 +60,13 @@ function custom_add_block_block_view($delta=0) {
       if (count($content) == 0) {
         // User cannot add content.
         $block['subject'] = 'Join Now';
-        $block['content'] = drupal_render(drupal_get_form('user_register_form')); 
+        $block['content'] = drupal_render(drupal_get_form('user_register_form'));
       }
       else {
         // Build the button panel.
         $output = '<div id="custom-add-block">';
         $imglink = drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
-        
+
         // Support weighted order of node buttons;
         $info = array();
         foreach ($content as $nodeitem) {
@@ -86,7 +77,7 @@ function custom_add_block_block_view($delta=0) {
           $info[$nodename]['href'] = $nodeitem['href'];
         }
         asort($node_order);
-        
+
         foreach ($node_order as $nodename => $v) {
           $nodeitem = $info[$nodename];
           // Add images using the link text as the image name.
@@ -94,12 +85,12 @@ function custom_add_block_block_view($delta=0) {
           $output .= l($outputimg . $nodeitem['link_title'], $nodeitem['href'], array('html' => TRUE));
           $output .= "</div>";
         }
-        
+
         $output .= "</div>";
         drupal_add_css(drupal_get_path('module', 'custom_add_block') . '/custom_add_block.css', 'file');
-        
+
         $block['subject'] = 'Add New Content';
-        $block['content'] =  $output;
+        $block['content'] = $output;
       }
       break;
 
@@ -107,15 +98,16 @@ function custom_add_block_block_view($delta=0) {
       if (count($content) == 0) {
         // User cannot add content.
         $block['subject'] = 'Join Now';
-        $block['content'] = drupal_render(drupal_get_form('user_register_form')); 
+        $block['content'] = drupal_render(drupal_get_form('user_register_form'));
       }
-      elseif (count($content) == 1)  {
+      elseif (count($content) == 1) {
         // User can add 1 type of content.
         $block['subject'] = 'Start Now';
-        $block['content'] =  t("<ul><li>Welcome !nameurl.</li><li>!url.</li></ul>", 
-               array('!nameurl' => l($account->name, "user/$account->uid"),
+        $block['content'] = t("<ul><li>Welcome !nameurl.</li><li>!url.</li></ul>",
+               array(
+               '!nameurl' => l($account->name, "user/$account->uid"),
                '!name' => $account->name,
-               '!url' => l(t('Click to Add New'), $item['href'])
+               '!url' => l(t('Click to Add New'), $item['href']),
                ));
       }
       else {
@@ -132,7 +124,7 @@ function custom_add_block_block_view($delta=0) {
           $info[$nodename]['href'] = $nodeitem['href'];
         }
         asort($node_order);
-        
+
         foreach ($node_order as $nodename => $v) {
           $nodeitem = $info[$nodename];
           $nodename = str_replace(" ", "_", $nodeitem['link_title']);
@@ -141,21 +133,17 @@ function custom_add_block_block_view($delta=0) {
           $output .= l($outputimg . $nodeitem['link_title'], $nodeitem['href'], array('html' => TRUE));
           $output .= "</div>";
         }
-        
+
         $output .= "</div>";
         drupal_add_js(drupal_get_path('module', 'custom_add_block') . '/custom_add_block.js', 'file');
         drupal_add_css(drupal_get_path('module', 'custom_add_block') . '/custom_add_block.css', 'file');
-        
+
         $block['subject'] = '<div id="custom-add-block-load"><img src="/' . drupal_get_path('module', 'custom_add_block') . '/add.png' . '">Add New Content</div><div id="custom-add-block-close"><img src="/' . drupal_get_path('module', 'custom_add_block') . '/delete.png' . '"></div>';
-        $block['content'] =  $output;
+        $block['content'] = $output;
       }
       break;
   }
 
 
-
   return $block;
 }
-
-
-
