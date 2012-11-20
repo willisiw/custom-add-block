@@ -1,0 +1,161 @@
+<?php
+/**
+ * @file
+ * Module to show block for registering new users.
+ */
+
+
+ /**
+ * Implements hook_menu().
+ */
+function custom_add_block_menu() {
+
+  
+  $items['admin/config/user-interface/custom_add_block'] = array(
+    'title' => 'Custom Add Block',
+    'description' => 'A block of configurable buttons to add content.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('custom_add_block_admin_settings'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'custom_add_block.admin.inc',
+    'file path' => drupal_get_path('module', 'custom_add_block'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ *
+ * For another example of using block hook functions, see:
+ * http://api.drupal.org/api/examples/block_example--block_example.module/7
+ *
+ * Learn more about hook_block_info() at:
+ * http://api.drupal.org/api/drupal/modules--block--block.api.php/function/hook_block_info/7
+ *
+ */
+function custom_add_block_block_info() {
+
+  $blocks['custom_add_block_jquery'] = array(
+    'info' => t('Custom Add Content Block with jQuery slideDown'),
+  );
+  $blocks['custom_add_block'] = array(
+    'info' => t('Custom Add Content Block'),
+  );
+  return $blocks;
+}
+
+
+
+/**
+ * Implements hook_block_view().
+ */
+function custom_add_block_block_view($delta=0) {
+  $block = array();
+  global $user;
+  $account = user_load($user->uid);
+  $output = '';
+
+  $item = menu_get_item('node/add');
+  $content = system_admin_menu_block($item);
+  // Bypass the node/add listing if only one content type is available.
+  if (count($content) == 1) {
+    $item = array_shift($content);
+   
+  }
+  $themedpage = theme('node_add_list', array('content' => $content));
+
+  switch ($delta) {
+    case 'custom_add_block':
+      if (count($content) == 0) {
+        // User cannot add content.
+        $block['subject'] = 'Join Now';
+        $block['content'] = drupal_render(drupal_get_form('user_register_form')); 
+      }
+      else {
+        // Build the button panel.
+        $output = '<div id="custom-add-block">';
+        $imglink = drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
+        
+        // Support weighted order of node buttons;
+        $info = array();
+        foreach ($content as $nodeitem) {
+          $nodename = str_replace(" ", "_", $nodeitem['link_title']);
+          $node_order[$nodename] = variable_get('custom_add_block_node_weight_' . $nodename);
+          $info[$nodename]['link_title'] = $nodeitem['link_title'];
+          $info[$nodename]['description'] = $nodeitem['description'];
+          $info[$nodename]['href'] = $nodeitem['href'];
+        }
+        asort($node_order);
+        
+        foreach ($node_order as $nodename => $v) {
+          $nodeitem = $info[$nodename];
+          // Add images using the link text as the image name.
+          $outputimg = '<div id="custom-add-block-icon"><img src="' . variable_get('custom_add_block_node_icon_' . $nodename, $imglink) . '" title="' . $nodeitem['description'] . '" alt="' . $nodeitem['description'] . '">';
+          $output .= l($outputimg . $nodeitem['link_title'], $nodeitem['href'], array('html' => TRUE));
+          $output .= "</div>";
+        }
+        
+        $output .= "</div>";
+        drupal_add_css(drupal_get_path('module', 'custom_add_block') . '/custom_add_block.css', 'file');
+        
+        $block['subject'] = 'Add New Content';
+        $block['content'] =  $output;
+      }
+      break;
+
+    case 'custom_add_block_jquery':
+      if (count($content) == 0) {
+        // User cannot add content.
+        $block['subject'] = 'Join Now';
+        $block['content'] = drupal_render(drupal_get_form('user_register_form')); 
+      }
+      elseif (count($content) == 1)  {
+        // User can add 1 type of content.
+        $block['subject'] = 'Start Now';
+        $block['content'] =  t("<ul><li>Welcome !nameurl.</li><li>!url.</li></ul>", 
+               array('!nameurl' => l($account->name, "user/$account->uid"),
+               '!name' => $account->name,
+               '!url' => l(t('Click to Add New'), $item['href'])
+               ));
+      }
+      else {
+        // Build the button panel.
+        $output = '<div id="custom-add-block-jq">';
+        $imglink = drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
+        // Support weighted order of node buttons;
+        $info = array();
+        foreach ($content as $nodeitem) {
+          $nodename = str_replace(" ", "_", $nodeitem['link_title']);
+          $node_order[$nodename] = variable_get('custom_add_block_node_weight_' . $nodename);
+          $info[$nodename]['link_title'] = $nodeitem['link_title'];
+          $info[$nodename]['description'] = $nodeitem['description'];
+          $info[$nodename]['href'] = $nodeitem['href'];
+        }
+        asort($node_order);
+        
+        foreach ($node_order as $nodename => $v) {
+          $nodeitem = $info[$nodename];
+          $nodename = str_replace(" ", "_", $nodeitem['link_title']);
+          // Add images using the link text as the image name.
+          $outputimg = '<div id="custom-add-block-icon"><img src="' . variable_get('custom_add_block_node_icon_' . $nodename, $imglink) . '" title="' . $nodeitem['description'] . '" alt="' . $nodeitem['description'] . '">';
+          $output .= l($outputimg . $nodeitem['link_title'], $nodeitem['href'], array('html' => TRUE));
+          $output .= "</div>";
+        }
+        
+        $output .= "</div>";
+        drupal_add_js(drupal_get_path('module', 'custom_add_block') . '/custom_add_block.js', 'file');
+        drupal_add_css(drupal_get_path('module', 'custom_add_block') . '/custom_add_block.css', 'file');
+        
+        $block['subject'] = '<div id="custom-add-block-load"><img src="/' . drupal_get_path('module', 'custom_add_block') . '/add.png' . '">Add New Content</div><div id="custom-add-block-close"><img src="/' . drupal_get_path('module', 'custom_add_block') . '/delete.png' . '"></div>';
+        $block['content'] =  $output;
+      }
+      break;
+  }
+
+
+
+  return $block;
+}
+
+
+
