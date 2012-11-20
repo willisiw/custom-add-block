@@ -21,13 +21,13 @@ div#custom-add-block-icon {
   line-height: 9pt;
   overflow: hidden;
   padding: 2px;
-  text-shadow: 0 1px 0 #FFF;
-  text-overflow: ellipsis;
   text-align: center;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 0 #FFF;
   width: 65px;
 }
 
-div#custom-add-block-icon img{
+div#custom-add-block-icon img {
   padding: 2px;
 }
 
