@@ -12,35 +12,34 @@
 }
 
 div#custom-add-block-icon {
+  color: #332;
   float: left;
-  height: 78px;
-  padding: 2px;
-  width: 65px;
-  color: #333;
-  text-shadow: 0 1px 0 #FFF;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
   font-family: Helvetica;
   font-size: 10pt;
-  line-height: 9pt;
   font-weight: normal;
+  height: 78px;
+  line-height: 9pt;
+  overflow: hidden;
+  padding: 2px;
+  text-shadow: 0 1px 0 #FFF;
+  text-overflow: ellipsis;
+  text-align: center;
+  width: 65px;
 }
 
 div#custom-add-block-icon img{
-  padding:2px;
-
+  padding: 2px;
 }
 
 
 div#custom-add-block-close {
+  bottom: -25px;
   float: right;
   position: absolute;
-  bottom: -25px;
   right: 25px;
 }
 
 
 div#custom-add-block-load img {
-  alignment-baseline: central; 
+  alignment-baseline: central;
 }
