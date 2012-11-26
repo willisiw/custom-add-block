@@ -36,7 +36,7 @@ function custom_add_block_admin_settings() {
     );
 
 
-    $imglink = '/' . drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
+    $imglink = base_path() . drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
     $previewimg = '<div id="custom-add-block-icon"><img src="' . variable_get('custom_add_block_node_icon_' . $nodename, $imglink) . '" title="' . $nodeitem['description'] . '" alt="' . $nodeitem['description'] . '">';
     $form['custom_add_block_node_icon_' . $nodename] = array(
       '#type' => 'textfield',
