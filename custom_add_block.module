@@ -64,7 +64,7 @@ function custom_add_block_block_view($delta=0) {
       else {
         // Build the button panel.
         $output = '<div id="custom-add-block">';
-        $imglink = drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
+        $imglink = base_path() . drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
 
         // Support weighted order of node buttons;
         $info = array();
@@ -80,8 +80,9 @@ function custom_add_block_block_view($delta=0) {
         foreach ($node_order as $nodename => $v) {
           $nodeitem = $info[$nodename];
           // Add images using the link text as the image name.
-          $outputimg = '<div id="custom-add-block-icon"><img src="' . variable_get('custom_add_block_node_icon_' . $nodename, $imglink) . '" title="' . $nodeitem['description'] . '" alt="' . $nodeitem['description'] . '">';
-          $output .= l($outputimg . $nodeitem['link_title'], $nodeitem['href'], array('html' => TRUE));
+          $output .= '<div id="custom-add-block-icon">';
+          $outputimg = '<img src="' . variable_get('custom_add_block_node_icon_' . $nodename, $imglink) . '" title="' . $nodeitem['description'] . '" alt="' . $nodeitem['description'] . '">';
+          $output .= l($outputimg . '</br>' . $nodeitem['link_title'], $nodeitem['href'], array('html' => TRUE));
           $output .= "</div>";
         }
 
@@ -112,7 +113,7 @@ function custom_add_block_block_view($delta=0) {
       else {
         // Build the button panel.
         $output = '<div id="custom-add-block-jq">';
-        $imglink = drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
+        $imglink = base_path() . drupal_get_path('module', 'custom_add_block') . '/defaultadd.png';
         // Support weighted order of node buttons;
         $info = array();
         foreach ($content as $nodeitem) {
@@ -128,8 +129,9 @@ function custom_add_block_block_view($delta=0) {
           $nodeitem = $info[$nodename];
           $nodename = str_replace(" ", "_", $nodeitem['link_title']);
           // Add images using the link text as the image name.
-          $outputimg = '<div id="custom-add-block-icon"><img src="' . variable_get('custom_add_block_node_icon_' . $nodename, $imglink) . '" title="' . $nodeitem['description'] . '" alt="' . $nodeitem['description'] . '">';
-          $output .= l($outputimg . $nodeitem['link_title'], $nodeitem['href'], array('html' => TRUE));
+          $output .= '<div id="custom-add-block-icon">';
+          $outputimg = '<img src="' . variable_get('custom_add_block_node_icon_' . $nodename, $imglink) . '" title="' . $nodeitem['description'] . '" alt="' . $nodeitem['description'] . '">';
+          $output .= l($outputimg . '</br>' . $nodeitem['link_title'], $nodeitem['href'], array('html' => TRUE));
           $output .= "</div>";
         }
 
@@ -137,7 +139,7 @@ function custom_add_block_block_view($delta=0) {
         drupal_add_js(drupal_get_path('module', 'custom_add_block') . '/custom_add_block.js', 'file');
         drupal_add_css(drupal_get_path('module', 'custom_add_block') . '/custom_add_block.css', 'file');
 
-        $block['subject'] = '<div id="custom-add-block-load"><img src="/' . drupal_get_path('module', 'custom_add_block') . '/add.png' . '">Add New Content</div><div id="custom-add-block-close"><img src="/' . drupal_get_path('module', 'custom_add_block') . '/delete.png' . '"></div>';
+        $block['subject'] = '<div id="custom-add-block-load"><img src="' . base_path() . drupal_get_path('module', 'custom_add_block') . '/add.png' . '">Add New Content</div><div id="custom-add-block-close"><img src="' . base_path() . drupal_get_path('module', 'custom_add_block') . '/delete.png' . '"></div>';
         $block['content'] = $output;
       }
       break;

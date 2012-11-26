@@ -6,13 +6,10 @@
 /* Reset the fixed width of input form text fields to use a dynamic width
  * depending on the parent elements.
  */
-#custom-add-block {
-  display: block;
-  z-index: 100;
-}
 
 div#custom-add-block-icon {
   color: #332;
+  display: block;
   float: left;
   font-family: Helvetica;
   font-size: 10pt;
@@ -41,5 +38,6 @@ div#custom-add-block-close {
 
 
 div#custom-add-block-load img {
-  alignment-baseline: central;
+  vertical-align: middle;
 }
+
