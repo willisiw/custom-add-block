@@ -3,4 +3,4 @@ description = Block of icons to Add Nodes.
 core = 7.x
 package = Other
 
-configure = admin/config/user-interface//custom_add_block
+configure = admin/config/user-interface/custom_add_block

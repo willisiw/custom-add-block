@@ -44,7 +44,7 @@ function custom_add_block_admin_settings() {
       '#default_value' => variable_get('custom_add_block_node_icon_' . $nodename, $imglink),
       '#description' => t('This is the icon in the add node block.'),
       '#prefix' => '<td>',
-      '#suffix' => '</td><td>' .  $previewimg . '</td></tr></table>',
+      '#suffix' => '</td><td>' . $previewimg . '</td></tr></table>',
     );
   }
 
