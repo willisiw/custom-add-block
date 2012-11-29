@@ -58,8 +58,10 @@ function custom_add_block_block_view($delta=0) {
     case 'custom_add_block':
       if (count($content) == 0) {
         // User cannot add content.
-        $block['subject'] = 'Join Now';
-        $block['content'] = drupal_render(drupal_get_form('user_register_form'));
+        return;
+        // Here you can add custom content.
+        $block['subject'] = 'Add New Content';
+        $block['content'] = 'Custom Text';
       }
       else {
         // Build the button panel.

@@ -13,6 +13,16 @@ function custom_add_block_admin_settings() {
   $count = 0;
   $weight_used = array();
 
+  $helptxt = '<td>Set the order you want the icons to be displayed.</td>';
+  $helptxt .= '<td>Set the path to your custom icons.  ex /images/exampleicon.png</td>';
+  $helptxt .= '<td width="75px" align="center">Icon preview.</td>';
+  $form['help'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<table><tr>',
+    '#markup' => $helptxt,
+    '#suffix' => '</tr></table>',
+  );
+
   foreach ($content as $nodeitem) {
     $nodename = str_replace(" ", "_", $nodeitem['link_title']);
     $weight = variable_get('custom_add_block_node_weight_' . $nodename, '');
@@ -42,9 +52,9 @@ function custom_add_block_admin_settings() {
       '#type' => 'textfield',
       '#title' => t('@nodename - Icon', array('@nodename' => $nodename)),
       '#default_value' => variable_get('custom_add_block_node_icon_' . $nodename, $imglink),
-      '#description' => t('This is the icon in the add node block.'),
+      '#description' => t('This is the icon in the add node block. 48x48 reccomended.'),
       '#prefix' => '<td>',
-      '#suffix' => '</td><td>' . $previewimg . '</td></tr></table>',
+      '#suffix' => '</td><td width="75px" align="center">' . $previewimg . '</br>' . $nodeitem['link_title'] . '</td></tr></table>',
     );
   }
 
