@@ -28,14 +28,12 @@ div#custom-add-block-icon img {
   padding: 2px;
 }
 
-
 div#custom-add-block-close {
   bottom: -25px;
   float: right;
   position: absolute;
   right: 25px;
 }
-
 
 div#custom-add-block-load img {
   vertical-align: middle;
