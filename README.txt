@@ -7,10 +7,10 @@ Authorized users can click an icon to add a node.
 
 
 For a full description of the module, visit the project page:
-  http://github.com/willisiw/custom-add-block
+  http://drupal.org/sandbox/willisiw/1846140
 
 To submit bug reports and feature suggestions, or to track changes:
-  http://github.com/willisiw/custom-add-block/issues
+  http://drupal.org/project/issues/1846140
 
 
 -- REQUIREMENTS --
