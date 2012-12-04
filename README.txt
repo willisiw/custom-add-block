@@ -73,4 +73,4 @@ A CSS is formatted to take advantage of a 48x48 pixel image.
 -- CONTACT --
 
 Current maintainers:
-* Ian Willis (willisiw) - http://github.com/willisiw
+* Ian Willis (willisiw) - http://627co.com
