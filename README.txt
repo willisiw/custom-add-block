@@ -54,13 +54,13 @@ http://example.com/somefolder/sites/all/modules/custom_add_block/defaultadd.png
 The module uses your basepath, so if your drupal site is:
  http://example.com/
  browse to: 
-   http://example.com/sites/all/modules/custom_add_block/defaultadd.png
+ http://example.com/sites/all/modules/custom_add_block/defaultadd.png
  config for: /sites/all/modules/custom_add_block/defaultadd.png
 
 If your site is
  http://example.com/somefolder
  browse to: 
-   http://example.com/somefolder/sites/all/modules/custom_add_block/defaultadd.png
+ http://example.com/somefolder/sites/all/modules/custom_add_block/defaultadd.png
  config for: /sites/all/modules/custom_add_block/defaultadd.png
 
 
