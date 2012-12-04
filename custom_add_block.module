@@ -6,6 +6,18 @@
 
 
 /**
+ * Implements hook_help().
+ */
+function custom_add_block_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#custom_add_block':
+      // Return a line-break version of the module README.txt
+      $helptxt = check_markup(file_get_contents(dirname(__FILE__) . "/README.txt"));
+      return $helptxt;
+  }
+}
+
+/**
  * Implements hook_menu().
  */
 function custom_add_block_menu() {
