@@ -33,13 +33,38 @@ To submit bug reports and feature suggestions, or to track changes:
 
 * SAVE - Click SAVE on the bottom of the config page.
 
+* Verify the icon displays on the admin page.
 
 
 -- TROUBLESHOOTING --
 
+If the Icon Image is not displaying.
+
+Check the path in the /?q=admin/config/user-interface/custom_add_block
+and verify that you can access the image directly by pasting the path 
+into your browsers address bar after your sites base address.
+
+http://example.com/sites/all/modules/custom_add_block/defaultadd.png
+or 
+http://example.com/somefolder/sites/all/modules/custom_add_block/defaultadd.png
+
+The module uses your basepath, so if your drupal site is:
+ http://example.com/
+ browse to: 
+   http://example.com/sites/all/modules/custom_add_block/defaultadd.png
+ config for: /sites/all/modules/custom_add_block/defaultadd.png
+
+If your site is
+ http://example.com/somefolder
+ browse to: 
+   http://example.com/somefolder/sites/all/modules/custom_add_block/defaultadd.png
+ config for: /sites/all/modules/custom_add_block/defaultadd.png
+
 
 -- FAQ --
-        
+
+Q What is the best image size for the icons?
+A CSS is formatted to take advantage of a 48x48 pixel image.
 
 
 -- CONTACT --
