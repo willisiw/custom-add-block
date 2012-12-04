@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Install file for custom_add_block module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function custom_add_block_install() {
+}
+
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Remove all the variables that might have been set while 
+ * this module was enabled.
+ */
+function custom_add_block_uninstall() {
+  db_delete('variable')
+    ->condition('name', "custom_add_block%", "LIKE")
+    ->execute();
+
+  cache_clear_all('variables', 'cache_bootstrap');
+}
