@@ -13,9 +13,9 @@ function custom_add_block_admin_settings() {
   $count = 0;
   $weight_used = array();
 
-  $helptxt = '<td>Set the order you want the icons to be displayed.</td>';
-  $helptxt .= '<td>Set the path to your custom icons.  ex /images/exampleicon.png</td>';
-  $helptxt .= '<td width="75px" align="center">Icon preview.</td>';
+  $helptxt = '<td>' . t('Set the order you want the icons to be displayed.') . '</td>';
+  $helptxt .= '<td>' . t('Set the path to your custom icons.') . '  ex /images/exampleicon.png</td>';
+  $helptxt .= '<td width="75px" align="center">' . t('Icon preview.') . '</td>';
   $form['help'] = array(
     '#type' => 'markup',
     '#prefix' => '<table><tr>',
