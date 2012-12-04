@@ -15,7 +15,7 @@ To submit bug reports and feature suggestions, or to track changes:
 
 -- REQUIREMENTS --
 
-* To use the slidedown block, the site must have jQuery.
+NONE.
 
 -- INSTALLATION --
 
@@ -24,10 +24,13 @@ To submit bug reports and feature suggestions, or to track changes:
 
 -- CONFIGURATION --
 
-* After enabling the module, navigate to
+* After enabling the module, navigate to 
+  Configuration > User interface > Custom add block 
+  or 
   /?q=admin/config/user-interface/custom_add_block
 
-* Upload 48x48 pixel square icons for each node type.
+* Upload 48x48 pixel square icons for each node type to a folder
+  publicly accesible on your site.  The module folder is one option.
  
 * Set path to the image for each icon. 
 
