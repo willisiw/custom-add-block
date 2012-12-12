@@ -1,6 +1,10 @@
 (function ($) {
-  $(document).ready(function() {
+/**
+ * Provide the toggle features for the custom_add_block_jquery
+ */
+Drupal.behaviors.customAddBlockJquery = {
 
+  attach: function(context, settings) {
     $('#block-custom-add-block-custom-add-block-jquery').once('custom_add_block', function () {
       // When site loaded, hide the Popupbox First
       $('#custom-add-block-jq').hide();
@@ -28,12 +32,6 @@
         $('#custom-add-block-close').show();
       }
     });
-
-    Drupal.behaviors.custom_add_block = {
-      attach: function (context, settings) {
-
-      } 
-    }
-
-  });
+  }
+}
 })(jQuery);
